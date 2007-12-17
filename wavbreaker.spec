@@ -10,7 +10,6 @@ Source0:	http://huli.org/wavbreaker/%{name}-%{version}.tar.bz2
 URL:		http://huli.org/wavbreaker/
 License:	GPL
 Group:		Sound
-BuildRoot:	%{_tmppath}/%{name}-buildroot
 Prefix:		%{_prefix}
 BuildRequires:	gtk+2-devel 
 BuildRequires:  libxml2-devel
