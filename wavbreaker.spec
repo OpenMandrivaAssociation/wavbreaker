@@ -1,23 +1,23 @@
 %define name wavbreaker
-%define version 0.8.0
+%define version 0.9
 %define release %mkrel 1
 
-Summary:	Gtk+ program to split WAV files between songs
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
-Source0:	http://huli.org/wavbreaker/%{name}-%{version}.tar.bz2
-URL:		http://huli.org/wavbreaker/
+Summary:	Gtk+ program to split WAV files between songs
 License:	GPL
 Group:		Sound
-BuildRoot:	%{_tmppath}/%{name}-buildroot
-Prefix:		%{_prefix}
+URL:		http://wavbreaker.sf.net/
+Source0:	http://downloads.sourceforge.net/wavbreaker/%{name}-%{version}.tar.bz2
+Suggests:       moodbar
 BuildRequires:	gtk+2-devel 
 BuildRequires:  libxml2-devel
 BuildRequires:  alsa-lib-devel
 BuildRequires:	desktop-file-utils
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
+BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
 This application's purpose in life is to take a wave file and break it up into
@@ -32,17 +32,18 @@ the files to an audio cd without any dead air between the tracks.
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 %makeinstall
 %find_lang %name
 
 desktop-file-install --vendor="" \
   --add-category="GTK" \
   --add-category="X-MandrivaLinux-Multimedia-Sound" \
-  --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
+  --dir %{buildroot}%{_datadir}/applications \
+  %{buildroot}%{_datadir}/applications/*
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %post
 %{update_menus}
