@@ -1,19 +1,20 @@
 %define name wavbreaker
-%define version 0.9
-%define release %mkrel 4
+%define version 0.10
+%define release %mkrel 1
 
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
 Summary:	Gtk+ program to split WAV files between songs
-License:	GPL
+License:	GPLv2+
 Group:		Sound
 URL:		http://wavbreaker.sf.net/
-Source0:	http://downloads.sourceforge.net/wavbreaker/%{name}-%{version}.tar.bz2
+Source0:	http://downloads.sourceforge.net/wavbreaker/%{name}-%{version}.tar.gz
 Suggests:       moodbar
 BuildRequires:	gtk+2-devel 
 BuildRequires:  libxml2-devel
 BuildRequires:  alsa-lib-devel
+BuildRequires:	pulseaudio-devel
 BuildRequires:	desktop-file-utils
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
@@ -33,7 +34,7 @@ the files to an audio cd without any dead air between the tracks.
 
 %install
 rm -rf %{buildroot}
-%makeinstall
+%makeinstall_std
 %find_lang %name
 
 desktop-file-install --vendor="" \
