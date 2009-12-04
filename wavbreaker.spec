@@ -10,6 +10,7 @@ License:	GPLv2+
 Group:		Sound
 URL:		http://wavbreaker.sf.net/
 Source0:	http://downloads.sourceforge.net/wavbreaker/%{name}-%{version}.tar.gz
+Patch0:		wavbreaker-0.10-mdv-fix-str-fmt.patch
 Suggests:       moodbar
 BuildRequires:	gtk+2-devel 
 BuildRequires:  libxml2-devel
@@ -27,6 +28,7 @@ the files to an audio cd without any dead air between the tracks.
 
 %prep
 %setup -q
+%patch0 -p1 -b .strfmt
 
 %build
 %configure2_5x
