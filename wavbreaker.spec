@@ -1,6 +1,6 @@
 %define name wavbreaker
-%define version 0.10
-%define release %mkrel 3
+%define version 0.11
+%define release 1
 
 Name:		%{name}
 Version:	%{version}
@@ -19,7 +19,6 @@ BuildRequires:	pulseaudio-devel
 BuildRequires:	desktop-file-utils
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
-BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
 This application's purpose in life is to take a wave file and break it up into
@@ -35,7 +34,6 @@ the files to an audio cd without any dead air between the tracks.
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 %find_lang %name
 
@@ -45,23 +43,7 @@ desktop-file-install --vendor="" \
   --dir %{buildroot}%{_datadir}/applications \
   %{buildroot}%{_datadir}/applications/*
 
-%clean
-rm -rf %{buildroot}
-
-%if %mdkversion < 200900
-%post
-%{update_menus}
-%{update_desktop_database}
-%endif
-
-%if %mdkversion < 200900
-%postun
-%{clean_menus}
-%{clean_desktop_database}
-%endif
-
 %files -f %name.lang
-%defattr(-,root,root)
 %doc AUTHORS README ChangeLog NEWS
 %_bindir/*
 %_datadir/applications/*
