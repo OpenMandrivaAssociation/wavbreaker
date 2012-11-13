@@ -1,0 +1,62 @@
+diff -p -up wavbreaker-0.10/src/popupmessage.c.strfmt wavbreaker-0.10/src/popupmessage.c
+--- wavbreaker-0.10/src/popupmessage.c.strfmt	2008-03-01 14:48:56.000000000 +0100
++++ wavbreaker-0.10/src/popupmessage.c	2009-12-04 15:55:16.000000000 +0100
+@@ -38,9 +38,9 @@ void popupmessage_show( GtkWidget *main_
+                                      GTK_DIALOG_DESTROY_WITH_PARENT | GTK_DIALOG_MODAL,
+                                      GTK_MESSAGE_INFO,
+                                      buttons_type,
+-                                     message);
++                                     "%s", message);
+ 
+-    gtk_message_dialog_format_secondary_text( GTK_MESSAGE_DIALOG(dialog), description);
++    gtk_message_dialog_format_secondary_text( GTK_MESSAGE_DIALOG(dialog), "%s", description);
+     gtk_window_set_title( GTK_WINDOW(dialog), message);
+ 
+     g_signal_connect( G_OBJECT(dialog), "response", (GtkSignalFunc)popupmessage_hide, dialog);
+diff -p -up wavbreaker-0.10/src/reallyquit.c.strfmt wavbreaker-0.10/src/reallyquit.c
+--- wavbreaker-0.10/src/reallyquit.c.strfmt	2008-03-01 14:48:56.000000000 +0100
++++ wavbreaker-0.10/src/reallyquit.c	2009-12-04 15:55:16.000000000 +0100
+@@ -36,11 +36,11 @@ void reallyquit_show(GtkWidget *main_win
+                                      GTK_DIALOG_DESTROY_WITH_PARENT,
+                                      GTK_MESSAGE_QUESTION,
+                                      GTK_BUTTONS_YES_NO,
+-                                     message);
++                                     "%s", message);
+ 
+ 
+     gtk_window_set_title( GTK_WINDOW(dialog), message);
+-    gtk_message_dialog_format_secondary_text( dialog, info_text);
++    gtk_message_dialog_format_secondary_text( dialog, "%s", info_text);
+ 
+     result = gtk_dialog_run( GTK_DIALOG(dialog));
+     switch( result) {
+diff -p -up wavbreaker-0.10/src/sample.c.strfmt wavbreaker-0.10/src/sample.c
+--- wavbreaker-0.10/src/sample.c.strfmt	2008-06-02 08:27:01.000000000 +0200
++++ wavbreaker-0.10/src/sample.c	2009-12-04 15:55:16.000000000 +0100
+@@ -268,12 +268,12 @@ int ask_open_as_raw()
+                                      GTK_DIALOG_DESTROY_WITH_PARENT,
+                                      GTK_MESSAGE_QUESTION,
+                                      GTK_BUTTONS_CANCEL,
+-                                     message);
++                                     "%s", message);
+     
+     gtk_dialog_add_button( GTK_DIALOG(dialog), _("Big endian"), WB_RESPONSE_BIG_ENDIAN);
+     gtk_dialog_add_button( GTK_DIALOG(dialog), _("Little endian"), WB_RESPONSE_LITTLE_ENDIAN);
+ 
+-    gtk_message_dialog_format_secondary_text( dialog, info_text);
++    gtk_message_dialog_format_secondary_text( dialog, "%s", info_text);
+     gtk_window_set_title( GTK_WINDOW(dialog), message);
+ 
+     result = gtk_dialog_run( GTK_DIALOG(dialog));
+diff -p -up wavbreaker-0.10/src/wavinfo.c.strfmt wavbreaker-0.10/src/wavinfo.c
+--- wavbreaker-0.10/src/wavinfo.c.strfmt	2009-12-04 15:55:44.000000000 +0100
++++ wavbreaker-0.10/src/wavinfo.c	2009-12-04 15:56:31.000000000 +0100
+@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
+         printf( "Header info for: %s\n", argv[i]);
+     
+         if( wav_read_header( argv[i], &sampleInfo, 1) != 0) {
+-            printf( wav_get_error_message());
++            printf( "%s", wav_get_error_message());
+         }
+ 
+         printf("\n");
