@@ -1,17 +1,21 @@
 Name:		wavbreaker
-Version:	0.11
-Release:	3
+Version:	0.13
+Release:	1
 Summary:	Gtk+ program to split WAV files between songs
 License:	GPLv2+
 Group:		Sound
 URL:		http://wavbreaker.sf.net/
-Source0:	http://downloads.sourceforge.net/wavbreaker/%{name}-%{version}.tar.gz
-Patch0:		wavbreaker-0.10-mdv-fix-str-fmt.patch
-BuildRequires:	pkgconfig(gtk+-2.0)
+Source0:	https://github.com/thp/%{name}/archive/%{version}.tar.gz
+
+BuildRequires:  meson
+BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:	pkgconfig(libpulse)
 BuildRequires:	desktop-file-utils
+BuildRequires:  pkgconfig(ao)
+BuildRequires:  pkgconfig(libmpg123)
+Recommends:     gstreamer1.0-moodbar
 Suggests:       moodbar
 
 %description
@@ -21,28 +25,25 @@ the files to an audio cd without any dead air between the tracks.
 
 %prep
 %setup -q
-%patch0 -p1 -b .strfmt
 
 %build
-%configure2_5x
-%make
+%meson
+%meson_buil
 
 %install
-%makeinstall_std
+%meson_install
 
-%find_lang %{name}
+%find_lang %name
 
-desktop-file-install --vendor="" \
-  --add-category="GTK" \
-  --add-category="X-MandrivaLinux-Multimedia-Sound" \
-  --dir %{buildroot}%{_datadir}/applications \
-  %{buildroot}%{_datadir}/applications/*
-
-%files -f %{name}.lang
-%doc AUTHORS README ChangeLog NEWS
-%{_bindir}/*
-%{_datadir}/applications/*
-%{_datadir}/pixmaps/*
-%{_iconsdir}/hicolor/*/apps/%{name}.*
-%{_mandir}/man1/*
-
+%files -f %name.lang
+%doc AUTHORS README.md
+%license COPYING
+%_bindir/wavbreaker
+%_bindir/wavgen
+%_bindir/wavinfo
+%_bindir/wavmerge
+%_datadir/applications/net.sourceforge.wavbreaker.desktop
+%_iconsdir/hicolor/scalable/apps/net.sourceforge.%name.svg
+%_mandir/man1/wavbreaker.1.xz
+%_mandir/man1/wavinfo.1.xz
+%_mandir/man1/wavmerge.1.xz
