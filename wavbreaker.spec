@@ -28,7 +28,7 @@ the files to an audio cd without any dead air between the tracks.
 
 %build
 %meson
-%meson_buil
+%meson_build
 
 %install
 %meson_install
