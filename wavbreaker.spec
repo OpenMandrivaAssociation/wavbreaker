@@ -5,7 +5,7 @@ Summary:	Gtk+ program to split WAV files between songs
 License:	GPLv2+
 Group:		Sound
 URL:		http://wavbreaker.sf.net/
-Source0:	https://github.com/thp/%{name}/archive/%{version}.tar.gz
+Source0:	https://github.com/thp/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:  meson
 BuildRequires:	pkgconfig(gtk+-3.0)
