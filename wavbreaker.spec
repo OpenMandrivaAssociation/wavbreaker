@@ -43,7 +43,7 @@ the files to an audio cd without any dead air between the tracks.
 %_bindir/wavinfo
 %_bindir/wavmerge
 %_datadir/applications/net.sourceforge.wavbreaker.desktop
-%_{datadir}/metainfo/net.sourceforge.wavbreaker.appdata.xml
+%{_datadir}/metainfo/net.sourceforge.wavbreaker.appdata.xml
 %_iconsdir/hicolor/scalable/apps/net.sourceforge.%name.svg
 %_mandir/man1/wavbreaker.1.*
 %_mandir/man1/wavinfo.1.*
