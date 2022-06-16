@@ -44,6 +44,6 @@ the files to an audio cd without any dead air between the tracks.
 %_bindir/wavmerge
 %_datadir/applications/net.sourceforge.wavbreaker.desktop
 %_iconsdir/hicolor/scalable/apps/net.sourceforge.%name.svg
-%_mandir/man1/wavbreaker.1.xz
-%_mandir/man1/wavinfo.1.xz
-%_mandir/man1/wavmerge.1.xz
+%_mandir/man1/wavbreaker.1.*
+%_mandir/man1/wavinfo.1.*
+%_mandir/man1/wavmerge.1.*
