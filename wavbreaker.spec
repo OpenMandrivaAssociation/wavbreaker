@@ -1,5 +1,5 @@
 Name:		wavbreaker
-Version:	0.15
+Version:	0.16
 Release:	1
 Summary:	Gtk+ program to split WAV files between songs
 License:	GPLv2+
