@@ -15,6 +15,7 @@ BuildRequires:	pkgconfig(libpulse)
 BuildRequires:	desktop-file-utils
 BuildRequires:  pkgconfig(ao)
 BuildRequires:  pkgconfig(libmpg123)
+BuildRequires:  pkgconfig(vorbisfile)
 Recommends:     gstreamer1.0-moodbar
 Suggests:       moodbar
 
@@ -39,12 +40,7 @@ the files to an audio cd without any dead air between the tracks.
 %doc AUTHORS README.md
 %license COPYING
 %_bindir/wavbreaker
-%_bindir/wavgen
-%_bindir/wavinfo
-%_bindir/wavmerge
 %_datadir/applications/net.sourceforge.wavbreaker.desktop
 %{_datadir}/metainfo/net.sourceforge.wavbreaker.appdata.xml
 %_iconsdir/hicolor/scalable/apps/net.sourceforge.%name.svg
 %_mandir/man1/wavbreaker.1.*
-%_mandir/man1/wavinfo.1.*
-%_mandir/man1/wavmerge.1.*
