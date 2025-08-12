@@ -1,0 +1,12 @@
+diff -rupN wavbreaker-0.16.old/data/net.sourceforge.wavbreaker.appdata.xml wavbreaker-0.16/data/net.sourceforge.wavbreaker.appdata.xml
+--- wavbreaker-0.16.old/data/net.sourceforge.wavbreaker.appdata.xml	2022-12-20 17:05:25.000000000 +0100
++++ wavbreaker-0.16/data/net.sourceforge.wavbreaker.appdata.xml	2025-08-12 19:26:53.895426552 +0200
+@@ -3,7 +3,7 @@
+ <component type="desktop-application">
+   <id>net.sourceforge.wavbreaker</id>
+   <metadata_license>FSFAP</metadata_license>
+-  <content_rating>none</content_rating>
++  <content_rating type="oars-1.1" />
+   <project_license>GPL-2.0+</project_license>
+   <name>wavbreaker</name>
+   <summary>GUI tool to split WAV, MP2 and MP3 files</summary>
